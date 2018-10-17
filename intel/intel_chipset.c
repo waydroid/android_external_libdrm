@@ -46,7 +46,7 @@ static const struct pci_device {
 	INTEL_SKL_IDS(9),
 };
 
-drm_private bool intel_is_genx(unsigned int devid, int gen)
+drm_public bool intel_is_genx(unsigned int devid, int gen)
 {
 	const struct pci_device *p,
 		  *pend = pciids + sizeof(pciids) / sizeof(pciids[0]);
@@ -68,7 +68,7 @@ drm_private bool intel_is_genx(unsigned int devid, int gen)
 	return false;
 }
 
-drm_private bool intel_get_genx(unsigned int devid, int *gen)
+drm_public bool intel_get_genx(unsigned int devid, int *gen)
 {
 	const struct pci_device *p,
 		  *pend = pciids + sizeof(pciids) / sizeof(pciids[0]);
