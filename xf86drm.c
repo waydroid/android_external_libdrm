@@ -69,6 +69,10 @@
 
 #include "util_math.h"
 
+#ifdef __ANDROID__
+#include <log/log.h>
+#endif
+
 #ifdef __OpenBSD__
 #define DRM_PRIMARY_MINOR_NAME  "drm"
 #define DRM_CONTROL_MINOR_NAME  "drmC"
@@ -138,16 +142,22 @@ drm_public void drmSetServerInfo(drmServerInfoPtr info)
 static int DRM_PRINTFLIKE(1, 0)
 drmDebugPrint(const char *format, va_list ap)
 {
+#ifdef __ANDROID__
+    return __android_log_vprint(ANDROID_LOG_DEBUG, "libdrm", format, ap);
+#else
     return vfprintf(stderr, format, ap);
+#endif
 }
 
 drm_public void
 drmMsg(const char *format, ...)
 {
     va_list ap;
+#ifndef __ANDROID__
     const char *env;
     if (((env = getenv("LIBGL_DEBUG")) && strstr(env, "verbose")) ||
         (drm_server_info && drm_server_info->debug_print))
+#endif
     {
         va_start(ap, format);
         if (drm_server_info) {
