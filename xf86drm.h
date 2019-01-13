@@ -605,6 +605,7 @@ extern int           drmOpenWithType(const char *name, const char *busid,
 
 extern int           drmOpenControl(int minor);
 extern int           drmOpenRender(int minor);
+extern int           drmOpenByFB(int fb, int type);
 extern int           drmClose(int fd);
 extern drmVersionPtr drmGetVersion(int fd);
 extern drmVersionPtr drmGetLibVersion(int fd);
