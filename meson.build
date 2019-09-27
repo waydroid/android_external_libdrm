@@ -21,7 +21,7 @@
 project(
   'libdrm',
   ['c'],
-  version : '2.4.91',
+  version : '2.4.96',
   license : 'MIT',
   meson_version : '>= 0.43',
   default_options : ['buildtype=debugoptimized', 'c_std=gnu99'],
@@ -211,6 +211,9 @@ foreach a : ['unused-parameter', 'attributes', 'long-long',
   endif
 endforeach
 
+# all c args:
+libdrm_c_args = warn_c_args + ['-fvisibility=hidden']
+
 
 dep_pciaccess = dependency('pciaccess', version : '>= 0.10', required : with_intel)
 dep_cunit = dependency('cunit', version : '>= 2.1', required : false)
@@ -286,7 +289,7 @@ libdrm = shared_library(
    ),
    config_file,
   ],
-  c_args : warn_c_args,
+  c_args : libdrm_c_args,
   dependencies : [dep_valgrind, dep_rt, dep_m],
   include_directories : inc_drm,
   version : '2.4.0',
@@ -303,10 +306,11 @@ install_headers(
   'include/drm/drm.h', 'include/drm/drm_fourcc.h', 'include/drm/drm_mode.h',
   'include/drm/drm_sarea.h', 'include/drm/i915_drm.h',
   'include/drm/mach64_drm.h', 'include/drm/mga_drm.h',
-  'include/drm/nouveau_drm.h', 'include/drm/qxl_drm.h',
-  'include/drm/r128_drm.h', 'include/drm/radeon_drm.h',
-  'include/drm/amdgpu_drm.h', 'include/drm/savage_drm.h',
-  'include/drm/sis_drm.h', 'include/drm/tegra_drm.h', 'include/drm/vc4_drm.h',
+  'include/drm/msm_drm.h', 'include/drm/nouveau_drm.h',
+  'include/drm/qxl_drm.h', 'include/drm/r128_drm.h',
+  'include/drm/radeon_drm.h', 'include/drm/amdgpu_drm.h',
+  'include/drm/savage_drm.h', 'include/drm/sis_drm.h',
+  'include/drm/tegra_drm.h', 'include/drm/vc4_drm.h',
   'include/drm/via_drm.h', 'include/drm/virtgpu_drm.h',
   subdir : 'libdrm',
 )

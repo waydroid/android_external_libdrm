@@ -6,6 +6,7 @@ cc_defaults {
         "intel_bufmgr.c",
         "intel_bufmgr_fake.c",
         "intel_bufmgr_gem.c",
+        "intel_chipset.c",
         "intel_decode.c",
         "mm.c",
     ],

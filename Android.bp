@@ -30,6 +30,7 @@ cc_defaults {
         // XXX: Consider moving these to config.h analogous to autoconf.
         "-DMAJOR_IN_SYSMACROS=1",
         "-DHAVE_VISIBILITY=1",
+        "-fvisibility=hidden",
         "-DHAVE_LIBDRM_ATOMIC_PRIMITIVES=1",
 
         "-Wall",
