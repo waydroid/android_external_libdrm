@@ -658,7 +658,7 @@ drm_public void drmSetServerInfo(drmServerInfoPtr info)
 static int DRM_PRINTFLIKE(1, 0)
 drmDebugPrint(const char *format, va_list ap)
 {
-#ifdef __ANDROID__
+#if defined( __ANDROID__) && !defined(__ANDROID_RECOVERY__)
     return __android_log_vprint(ANDROID_LOG_DEBUG, "libdrm", format, ap);
 #else
     return vfprintf(stderr, format, ap);
