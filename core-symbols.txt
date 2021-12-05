@@ -22,6 +22,7 @@ drmAuthMagic
 drmAvailable
 drmCheckModesettingSupported
 drmClose
+drmCloseBufferHandle
 drmCloseOnce
 drmCommandNone
 drmCommandRead
@@ -109,6 +110,7 @@ drmModeCrtcSetGamma
 drmModeDestroyPropertyBlob
 drmModeDetachMode
 drmModeDirtyFB
+drmModeFormatModifierBlobIterNext
 drmModeFreeConnector
 drmModeFreeCrtc
 drmModeFreeEncoder
