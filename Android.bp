@@ -72,6 +72,7 @@ cc_defaults {
         "-Wno-pointer-arith",
         "-Wno-unused-parameter",
         "-Wno-unused-variable",
+        "-Wno-unused-function",
     ],
     export_system_include_dirs: ["."],
 }
